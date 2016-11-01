@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth        = -10
+            <string>randomize();
+
+depth        = -10
 unitSpawnCD  = 20
 canSpawnUnit = true
 baseHP       = 100
@@ -37,10 +39,61 @@ defendersWon = false
 
 idd          = 0
 
-randomize();
 
 gold_player1 = 100
 gold_player2 = 150
+
+
+cursor_sprite = spr_cursor_attacker
+
+//create cursors
+instance_create(x, y, obj_cursor_attacker)
+
+//Player 1 attack units
+with (instance_create(x + 10, y + 300, obj_button_build)) 
+{
+    spr_name    = spr_unit_1
+    obj_Created = obj_unit_1
+    unit_name   = "DOG UNIT"
+    unit_cost   = 50
+}
+with (instance_create(x + 10, y + 500, obj_button_build))
+{
+    spr_name    = spr_unit_2
+    obj_Created = obj_unit_2
+    unit_name   = "CAT UNIT"
+    unit_cost   = 150
+}
+with (instance_create(x + 10, y + 700, obj_button_build))
+{
+    spr_name    = spr_unit_3
+    obj_Created = obj_unit_3
+    unit_name   = "FROG UNIT"
+    unit_cost   = 100
+}
+
+//Player 2 defense units
+with (instance_create(x + 1450, y + 300, obj_button_build))
+{
+    spr_name     = spr_tower_01
+    obj_Created  = obj_tower_1
+    unit_name    = "FIRE TOWER"
+    unit_cost    = 1000
+}
+with (instance_create(x + 1450, y + 500, obj_button_build))
+{
+    spr_name     = spr_tower_02
+    obj_Created  = obj_tower_2
+    unit_name    = "WATER TOWER"
+    unit_cost    = 300
+}
+with (instance_create(x + 1450, y + 700, obj_button_build))
+{
+    spr_name     = spr_tower_03
+    obj_Created  = obj_tower_3
+    unit_name    = "LEAF TOWER"
+    unit_cost    = 50
+}
 </string>
           </argument>
         </arguments>
@@ -142,9 +195,6 @@ if (baseHP &lt;= 0 &amp;&amp; defendersWon == false)
             <string>//Draw player icons backgrounds
 draw_sprite(spr_player_icon_bck, 0, x, y)
 draw_sprite(spr_player_icon_bck, 0, x + 1440, y)
-
-//Draw unit icons backgrounds
-draw_sprite(spr_unit_bck, 0, x, y)
 
 //Draw AVATARS
 draw_sprite(spr_player_1, 0, x + 80, y + 70)
