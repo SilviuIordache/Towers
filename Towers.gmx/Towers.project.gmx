@@ -48,6 +48,9 @@
     <path>paths\path_01</path>
     <path>paths\path_02</path>
     <path>paths\path_03</path>
+    <path>paths\path_04</path>
+    <path>paths\path_05</path>
+    <path>paths\path_06</path>
   </paths>
   <scripts name="scripts">
     <script>scripts\shootProjectileAt.gml</script>

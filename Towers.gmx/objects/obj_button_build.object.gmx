@@ -29,7 +29,9 @@
 unit_name   = "DEFAULT"
 unit_cost   = 50
 obj_Created = 0
+
 mouseOver  = false
+selected   = false
 </string>
           </argument>
         </arguments>
@@ -52,9 +54,7 @@ mouseOver  = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -82,16 +82,20 @@ if (mouseOver == true)
 {
     draw_sprite(spr_button_mouseOver, 0, x, y)
 }
+if (selected == true)
+{
+    draw_sprite(spr_button_selected, 0, x, y)
+}
 draw_set_color(c_black)
 
 //unit sprite
-draw_sprite_ext(spr_name, 0, x + 60, y + 60, 2, 2, 0, c_white, 1)
+draw_sprite_ext(spr_name, 0, x + 60, y + 85, 1, 1, 0, c_white, 1)
 
 //unit name
-draw_text(x + 20, y, string(unit_name))
+draw_text(x + 20, y + 10, string(unit_name))
 
 //cost
-draw_text(x + 40, y + 110, string(unit_cost))
+draw_text(x + 10, y + 120, string(unit_cost))
 draw_sprite(spr_gold, 0, x + 110, y + 115)
 </string>
           </argument>

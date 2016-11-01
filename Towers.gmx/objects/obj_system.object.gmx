@@ -39,7 +39,6 @@ defendersWon = false
 
 idd          = 0
 
-
 gold_player1 = 100
 gold_player2 = 150
 
@@ -48,6 +47,7 @@ cursor_sprite = spr_cursor_attacker
 
 //create cursors
 instance_create(x, y, obj_cursor_attacker)
+instance_create(x + 50, y + 50, obj_cursor_defender)
 
 //Player 1 attack units
 with (instance_create(x + 10, y + 300, obj_button_build)) 
@@ -143,7 +143,7 @@ with (instance_create(x + 1450, y + 700, obj_button_build))
 {
     canSpawnUnit = false
     alarm[0]     = unitSpawnCD
-    instance_create(mouse_x, mouse_y, obj_unit)
+    instance_create(mouse_x, mouse_y, obj_cursor_attacker.objectSelection)
 }
 
 if (collision_point( mouse_x, mouse_y, obj_tower_slot, 0, 0 ))
@@ -249,13 +249,17 @@ draw_text(x, y - 50, "TIME: " + string(gameTimer/60))
             <string>draw_set_colour(c_white)
 depth = 10
 draw_set_alpha(0.3)
+
+//spawn zone 01 paths
 draw_path(path_01, x, y, true);
 draw_path(path_02, x, y, true);
 draw_path(path_03, x, y, true);
+//spawn zone 02 paths
+draw_path(path_04, x, y, true);
+draw_path(path_05, x, y, true);
+draw_path(path_06, x, y, true);
+
 draw_set_alpha(1)
-
-
-
 
 //DEBUG DRAW
 /*

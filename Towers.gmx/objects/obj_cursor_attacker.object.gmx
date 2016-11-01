@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>idd             = 0
-objectSelection = 0
+objectSelection = obj_unit_1
 </string>
           </argument>
         </arguments>
@@ -56,10 +56,12 @@ if (collision_point( x, y, obj_button_build, false, true ))
 {
     idd = collision_point( x, y, obj_button_build, false, true )
     idd.mouseOver = true
+    objectSelection = idd.obj_Created
 
     if device_mouse_check_button(0, mb_left)
     {
-      other.clicked = true
+      obj_button_build.selected = false
+      idd.selected = true
     }
 }
 else
