@@ -85,7 +85,9 @@ if(async_load[? "event_type"] == "gamepad discovered")             // Parse the 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (var i = 0; i &lt; 4; i++;)
+            <string>///GAMEPAD VARIABLES DEBUG
+/*
+for (var i = 0; i &lt; 4; i++;)
 {
     var xx = 32;
     var yy = 32 + (160 * i);

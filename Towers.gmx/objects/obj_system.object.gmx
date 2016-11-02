@@ -26,21 +26,24 @@
           <argument>
             <kind>1</kind>
             <string>randomize();
-//gamepad--------
 
-//---------------
+//player stats
+gold_player1 = 100
+gold_player2 = 150
+baseHP       = 100
+//------------
+
 depth        = -10
 unitSpawnCD  = 20
 canSpawnUnit = true
-baseHP       = 100
+
 
 gameTimer    = 60 * 30
 gameOver     = false
 attackersWon = false
 defendersWon = false
 
-gold_player1 = 100
-gold_player2 = 150
+
 
 idd          = 0
 
@@ -64,21 +67,21 @@ with (instance_create(x + 10, y + 300, obj_button_build))
     spr_name    = spr_unit_1
     obj_Created = obj_unit_1
     unit_name   = "DOG UNIT"
-    unit_cost   = 50
+    unit_cost   = 3
 }
 with (instance_create(x + 10, y + 500, obj_button_build))
 {
     spr_name    = spr_unit_2
     obj_Created = obj_unit_2
     unit_name   = "CAT UNIT"
-    unit_cost   = 150
+    unit_cost   = 15
 }
 with (instance_create(x + 10, y + 700, obj_button_build))
 {
     spr_name    = spr_unit_3
     obj_Created = obj_unit_3
     unit_name   = "FROG UNIT"
-    unit_cost   = 100
+    unit_cost   = 10
 }
 
 //Player 2 defense units
@@ -87,21 +90,21 @@ with (instance_create(x + 1450, y + 300, obj_button_build))
     spr_name     = spr_tower_01
     obj_Created  = obj_tower_1
     unit_name    = "FIRE TOWER"
-    unit_cost    = 1000
+    unit_cost    = 10
 }
 with (instance_create(x + 1450, y + 500, obj_button_build))
 {
     spr_name     = spr_tower_02
     obj_Created  = obj_tower_2
     unit_name    = "WATER TOWER"
-    unit_cost    = 300
+    unit_cost    = 3
 }
 with (instance_create(x + 1450, y + 700, obj_button_build))
 {
     spr_name     = spr_tower_03
     obj_Created  = obj_tower_3
     unit_name    = "LEAF TOWER"
-    unit_cost    = 50
+    unit_cost    = 5
 }
 </string>
           </argument>
@@ -148,22 +151,28 @@ with (instance_create(x + 1450, y + 700, obj_button_build))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (gamepad_button_check(0, gp_face1) &amp; canSpawnUnit == true)
+            <string>//GAMEPAD INPUT--------------------------------------------------------------------------------------------
+
+//ATTACKER PLAYER
+if (gamepad_button_check(0, gp_shoulderrb) &amp; canSpawnUnit == true)
 {
     canSpawnUnit = false
     alarm[0]     = unitSpawnCD
     instance_create(mouse_x, mouse_y, obj_cursor_attacker.unit_selection)
 }
 
-if (collision_point( mouse_x, mouse_y, obj_tower_slot, 0, 0 ))
+//DEFENDER PLAYER
+if (collision_point( obj_cursor_defender.x, obj_cursor_defender.y, obj_tower_slot, 0, 0 ))
 {
-    idd = collision_point( mouse_x, mouse_y, obj_tower_slot, 0, 0 );
-    if (mouse_check_button(mb_right) &amp;&amp; idd.slotOccupied == false)
+    idd = collision_point( obj_cursor_defender.x, obj_cursor_defender.y, obj_tower_slot, 0, 0 );
+    if (gamepad_button_check(1, gp_shoulderrb) &amp;&amp; idd.slotOccupied == false)
     {
-        instance_create(idd.x, idd.y, obj_tower)
+        instance_create(idd.x, idd.y, obj_cursor_defender.tower_selection)
+        gold_player2 -= obj_cursor_defender.tower_selection.goldCost
         idd.slotOccupied = true
     }
 }
+//--------------------------------------------------------------------------------------------------------
 
 //TIME DEPLETE
 gameTimer -= 1

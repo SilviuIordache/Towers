@@ -77,9 +77,13 @@
       <object>objects\obj_unit_2</object>
       <object>objects\obj_unit_3</object>
     </objects>
+    <objects name="obj_spawn_zones">
+      <object>objects\obj_spawn_zone</object>
+      <object>objects\obj_spawn_zone_01</object>
+      <object>objects\obj_spawn_zone_02</object>
+    </objects>
     <object>objects\obj_button_build</object>
     <object>objects\obj_base</object>
-    <object>objects\obj_spawn_zone</object>
     <object>objects\obj_tower_slot</object>
     <object>objects\obj_projectile_tower</object>
     <object>objects\obj_projectile_unit</object>

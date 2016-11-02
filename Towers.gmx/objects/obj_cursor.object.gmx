@@ -31,6 +31,7 @@ role_defender   = false
 
 sprite          = spr_cursor_defender
 unit_selection  = obj_unit_1
+tower_selection = obj_tower_2
 idd             = 0
 device_number   = 0  // 0 = 1st device, 1 = 2nd device, 2 = 3rd device, 3 = 4th device
 
@@ -63,14 +64,14 @@ device_number   = 0  // 0 = 1st device, 1 = 2nd device, 2 = 3rd device, 3 = 4th 
 //y = window_mouse_get_y()
 
 //GAMEPAD INPUT--------------------------------------------
-    var h_move = gamepad_axis_value(device_number, gp_axislh);
-    var v_move = gamepad_axis_value(device_number, gp_axislv);
-    
-    if ((h_move != 0) || (v_move != 0))
-    {
-        x += h_move * 10;
-        y += v_move * 10;
-    }
+var h_move = gamepad_axis_value(device_number, gp_axislh);
+var v_move = gamepad_axis_value(device_number, gp_axislv);
+
+if ((h_move != 0) || (v_move != 0))
+{
+    x += h_move * 10;
+    y += v_move * 10;
+}
 //---------------------------------------------------------
 
 
@@ -80,7 +81,7 @@ if (collision_point( x, y, obj_button_build, false, true ))
     idd.mouseOver = true
     objectSelection = idd.obj_Created
 
-    if device_mouse_check_button(0, mb_left)
+    if gamepad_button_check(0, gp_face1)
     {
       obj_button_build.selected = false //deselect all other buttons
       idd.selected = true               //select the currently clicked one
