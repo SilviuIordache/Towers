@@ -26,7 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>randomize();
+//gamepad--------
 
+//---------------
 depth        = -10
 unitSpawnCD  = 20
 canSpawnUnit = true
@@ -37,17 +39,24 @@ gameOver     = false
 attackersWon = false
 defendersWon = false
 
-idd          = 0
-
 gold_player1 = 100
 gold_player2 = 150
 
+idd          = 0
 
-cursor_sprite = spr_cursor_attacker
 
 //create cursors
-instance_create(x, y, obj_cursor_attacker)
-instance_create(x + 50, y + 50, obj_cursor_defender)
+//player 1 attacker cursor, device input id = 0
+idd = instance_create(364, 364, obj_cursor_attacker)
+idd.device_number = 0
+idd.sprite        = spr_cursor_attacker
+obj_gamepad_controller.player[idd.device_number] = idd
+
+//player 2 attacker cursor, device input id = 1
+idd = instance_create(500, 500, obj_cursor_defender)
+idd.device_number = 1
+idd.sprite        = spr_cursor_defender
+obj_gamepad_controller.player[idd.device_number] = idd
 
 //Player 1 attack units
 with (instance_create(x + 10, y + 300, obj_button_build)) 
@@ -139,11 +148,11 @@ with (instance_create(x + 1450, y + 700, obj_button_build))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (mouse_check_button(mb_left) &amp; canSpawnUnit == true)
+            <string>if (gamepad_button_check(0, gp_face1) &amp; canSpawnUnit == true)
 {
     canSpawnUnit = false
     alarm[0]     = unitSpawnCD
-    instance_create(mouse_x, mouse_y, obj_cursor_attacker.objectSelection)
+    instance_create(mouse_x, mouse_y, obj_cursor_attacker.unit_selection)
 }
 
 if (collision_point( mouse_x, mouse_y, obj_tower_slot, 0, 0 ))
@@ -246,7 +255,8 @@ draw_text(x, y - 50, "TIME: " + string(gameTimer/60))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour(c_white)
+            <string>///NORMAL DRAW
+draw_set_colour(c_white)
 depth = 10
 draw_set_alpha(0.3)
 

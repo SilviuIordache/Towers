@@ -56,10 +56,14 @@
     <script>scripts\shootProjectileAt.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\obj_gamepad_controller</object>
     <object>objects\obj_system</object>
     <objects name="obj_cursor_objects">
+      <object>objects\obj_cursor</object>
       <object>objects\obj_cursor_attacker</object>
       <object>objects\obj_cursor_defender</object>
+      <object>objects\obj_cursor_attacker11</object>
+      <object>objects\obj_cursor_defender11</object>
     </objects>
     <objects name="obj_tower_units">
       <object>objects\obj_tower</object>
