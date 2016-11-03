@@ -45,15 +45,30 @@ towerNear   = false
 
 idd = 0
 resumePathDelay = 60
+
+//PATH VARIABLES-------------------------------------
 //start on the path
+startZone = 0
 path = irandom(2) + 1
 
-if (path == 1)
-   path_start(path_01, spd, path_action_stop, 1);
-if (path == 2)
-   path_start(path_02, spd, path_action_stop, 1);
-if (path == 3)
-   path_start(path_03, spd, path_action_stop, 1);
+if (startZone == 0)
+{
+    if (path == 1)
+       path_start(path_01, spd, path_action_stop, 1);
+    if (path == 2)
+       path_start(path_02, spd, path_action_stop, 1);
+    if (path == 3)
+       path_start(path_03, spd, path_action_stop, 1);
+}
+else
+{
+    if (path == 1)
+       path_start(path_01, spd, path_action_stop, 1);
+    if (path == 2)
+       path_start(path_02, spd, path_action_stop, 1);
+    if (path == 3)
+       path_start(path_03, spd, path_action_stop, 1);
+}
 </string>
           </argument>
         </arguments>

@@ -26,17 +26,47 @@
           <argument>
             <kind>1</kind>
             <string>depth           = -10000
-role_attacker   = false
-role_defender   = false
 
 sprite          = spr_cursor_defender
 unit_selection  = obj_unit_1
-tower_selection = obj_tower_2
 idd             = 0
 device_number   = 0  // 0 = 1st device, 1 = 2nd device, 2 = 3rd device, 3 = 4th device
 
-//pad_num         = 0
+canSpawnUnit    = true
+cd_unitSpawn    = 0.5 * 60
 
+canSpawnTower   = true
+cd_towerSpawn   = 0.5 * 60
+
+xboxPadInput    = 0
+
+//---BUILD BUTTONS ARRAYs-----
+arrayButtons[] = 0
+//----------------------------
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>canSpawnUnit = true
 </string>
           </argument>
         </arguments>
@@ -63,7 +93,9 @@ device_number   = 0  // 0 = 1st device, 1 = 2nd device, 2 = 3rd device, 3 = 4th 
 //x = window_mouse_get_x()
 //y = window_mouse_get_y()
 
-//GAMEPAD INPUT--------------------------------------------
+
+
+//---CURSOR MOVE FROM GAMEPAD INPUT-------------------------
 var h_move = gamepad_axis_value(device_number, gp_axislh);
 var v_move = gamepad_axis_value(device_number, gp_axislv);
 
@@ -72,9 +104,9 @@ if ((h_move != 0) || (v_move != 0))
     x += h_move * 10;
     y += v_move * 10;
 }
-//---------------------------------------------------------
+//----------------------------------------------------------
 
-
+/*
 if (collision_point( x, y, obj_button_build, false, true ))
 {
     idd = collision_point( x, y, obj_button_build, false, true )
@@ -91,6 +123,24 @@ else
 {
     idd.mouseOver = false
 }
+*/
+//Is Y pressed?
+if (gamepad_button_check(device_number, gp_face4))
+    xboxPadInput = 0
+//Is X pressed?
+if (gamepad_button_check(device_number, gp_face3))
+    xboxPadInput = 1
+//Is A pressed?
+if (gamepad_button_check(device_number, gp_face1))
+    xboxPadInput = 2
+    
+for(i = 0; i &lt; 3; i++) //clear all selected available buttons
+{
+    arrayButtons[i].selected = false
+}
+arrayButtons[xboxPadInput].selected = true //set the current selection as TRUE/SELECTED
+unit_selection = arrayButtons[xboxPadInput].obj_Created //set the current object to be spawned to the one stored in the button
+
 </string>
           </argument>
         </arguments>

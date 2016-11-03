@@ -26,6 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
+
+arrayLanes[0] = path_01
+arrayLanes[1] = path_02
+arrayLanes[2] = path_03
+
 </string>
           </argument>
         </arguments>

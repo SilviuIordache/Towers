@@ -337,7 +337,7 @@
     <instance objName="obj_path" x="864" y="480" name="inst_049280D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path" x="864" y="512" name="inst_B65F6A68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path" x="864" y="544" name="inst_FADE93D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_spawn_zone" x="304" y="976" name="inst_F813D65D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawn_zone" x="304" y="944" name="inst_F813D65D" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spawn_zone" x="528" y="-16" name="inst_101F2089" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_base" x="1392" y="720" name="inst_799A3C06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tower_slot" x="368" y="848" name="inst_6ACCACEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

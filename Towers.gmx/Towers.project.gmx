@@ -40,6 +40,12 @@
       <sprite>sprites\spr_cursor_attacker</sprite>
       <sprite>sprites\spr_cursor_defender</sprite>
     </sprites>
+    <sprites name="xbox_buttons">
+      <sprite>sprites\spr_xbox_x</sprite>
+      <sprite>sprites\spr_xbox_y</sprite>
+      <sprite>sprites\spr_xbox_a</sprite>
+      <sprite>sprites\spr_xbox_b</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

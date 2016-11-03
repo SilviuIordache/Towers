@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>spr_name    = spr_unit_1
+spr_button  = spr_xbox_x
 unit_name   = "DEFAULT"
 unit_cost   = 50
 obj_Created = 0
@@ -96,7 +97,10 @@ draw_text(x + 20, y + 10, string(unit_name))
 
 //cost
 draw_text(x + 10, y + 120, string(unit_cost))
-draw_sprite(spr_gold, 0, x + 110, y + 115)
+draw_sprite_ext(spr_gold, 0, x + 50, y + 125, 0.5, 0.5, 0, c_white, 1) 
+
+//draw Xbox controller button input
+draw_sprite_ext(spr_button, 0, x + 115, y + 110, 1, 1, 0, c_white, 1) 
 </string>
           </argument>
         </arguments>
