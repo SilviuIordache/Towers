@@ -39,6 +39,7 @@ canSpawnTower   = true
 cd_towerSpawn   = 0.5 * 60
 
 xboxPadInput    = 0
+zoneToSpawnIn   = 0  // where to spawn attack units 0= no zone, 1 = 1st zone, 2 = 2nd zone
 
 //---BUILD BUTTONS ARRAYs-----
 arrayButtons[] = 0
@@ -101,29 +102,11 @@ var v_move = gamepad_axis_value(device_number, gp_axislv);
 
 if ((h_move != 0) || (v_move != 0))
 {
-    x += h_move * 10;
-    y += v_move * 10;
+    x += h_move * 7;
+    y += v_move * 7;
 }
 //----------------------------------------------------------
 
-/*
-if (collision_point( x, y, obj_button_build, false, true ))
-{
-    idd = collision_point( x, y, obj_button_build, false, true )
-    idd.mouseOver = true
-    objectSelection = idd.obj_Created
-
-    if gamepad_button_check(0, gp_face1)
-    {
-      obj_button_build.selected = false //deselect all other buttons
-      idd.selected = true               //select the currently clicked one
-    }
-}
-else
-{
-    idd.mouseOver = false
-}
-*/
 //Is Y pressed?
 if (gamepad_button_check(device_number, gp_face4))
     xboxPadInput = 0

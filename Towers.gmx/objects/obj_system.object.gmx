@@ -25,44 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize();
-
-//player stats
-gold_player1 = 100
-gold_player2 = 150
-baseHP       = 100
-//------------
-
+            <string>///MAIN CREATE EVENT
+randomize();
 depth        = -10
-unitSpawnCD  = 20
-canSpawnUnit = true
+idd          = 0
 
-
+//-----GAME STATE LOGIC-------------------
 gameTimer    = 60 * 30
 gameOver     = false
 attackersWon = false
 defendersWon = false
+//----------------------------------------
 
 
-idd          = 0
+//----SPAWN TIME PRESSURE BAR-------------
+spawnTimeValueInitial = 3 * 60
+spawnTimeValueCurrent = spawnTimeValueInitial
+//----------------------------------------
 
 
-
-//CREATE CURSORS------------------------------------------
+//------CREATE CURSORS------------------------------------------
 //player 1 attacker cursor, device input id = 0
-idd = instance_create(364, 364, obj_cursor_attacker)
+idd = instance_create(200, 800, obj_cursor_attacker)
 idd.device_number = 0
 idd.sprite        = spr_cursor_attacker
 obj_gamepad_controller.player[idd.device_number] = idd
 
 //player 2 attacker cursor, device input id = 1
-idd = instance_create(500, 500, obj_cursor_defender)
+idd = instance_create(200, 800, obj_cursor_defender)
 idd.device_number = 1
 idd.sprite        = spr_cursor_defender
 obj_gamepad_controller.player[idd.device_number] = idd
-//--------------------------------------------------------
+//--------------------------------------------------------------
 
 
+//HUD BUTTONS---------------------------------------------------
 //Player 1 attack units
 idd = instance_create(x + 10, y + 300, obj_button_build)
 with (idd)
@@ -71,7 +68,7 @@ with (idd)
     spr_button  = spr_xbox_y
     obj_Created = obj_unit_1
     unit_name   = "DOG UNIT"
-    unit_cost   = 3
+    unit_cost   = 1
 }
 obj_cursor_attacker.arrayButtons[0] = idd
 
@@ -82,7 +79,7 @@ with (idd)
     spr_button  = spr_xbox_x
     obj_Created = obj_unit_2
     unit_name   = "CAT UNIT"
-    unit_cost   = 15
+    unit_cost   = 3
 }
 obj_cursor_attacker.arrayButtons[1] = idd
 
@@ -93,7 +90,7 @@ with (idd)
     spr_button  = spr_xbox_a
     obj_Created = obj_unit_3
     unit_name   = "FROG UNIT"
-    unit_cost   = 10
+    unit_cost   = 5
 }
 obj_cursor_attacker.arrayButtons[2] = idd
 
@@ -127,9 +124,48 @@ with (idd)
     spr_button   = spr_xbox_a
     obj_Created  = obj_tower_3
     unit_name    = "LEAF TOWER"
-    unit_cost    = 5
+    unit_cost    = 15
 }
 obj_cursor_defender.arrayButtons[2] = idd
+//------------------------------------------------------------------
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///PLAYERS, UNITS &amp; TOWERS STATS
+
+gold_player1 = 100
+gold_player2 = 150
+
+player2_HP   = 100
+
+costArray[] = 0
+
+//units
+costArray[0] = 3
+costArray[1] = 5
+costArray[2] = 10
+
+//towers
+costArray[3] = 1
+costArray[4] = 5
+costArray[5] = 16
 </string>
           </argument>
         </arguments>
@@ -155,8 +191,20 @@ obj_cursor_defender.arrayButtons[2] = idd
             <string>//TIME DEPLETE
 gameTimer -= 1
 
+//Spawn Time Pressure----------------
+if (spawnTimeValueCurrent &gt; 0)
+{
+    spawnTimeValueCurrent -= 1
+}
+
+if (spawnTimeValueCurrent == 0)
+{
+    gold_player2 += 1/60
+}
+//------------------------------------
 
 //CHECK FOR WIN CONDITIONS
+/*
 if (gameTimer &lt;= 0 &amp;&amp; baseHP &gt; 1)
 {
    defendersWon = true
@@ -205,20 +253,29 @@ draw_text(x + 1480, y + 130, "PLAYER 2")
 draw_set_color(c_white)
     //p1
     draw_sprite(spr_gold, 0, x + 50, y + 215)
-    draw_text(x + 100, y + 205, string(gold_player1))
+    draw_text(x + 100, y + 205, ceil(gold_player1))
     //p2
     draw_sprite(spr_gold, 0, x + 1475, y + 215)
-    draw_text(x + 1520, y + 205, string(gold_player2))
+    draw_text(x + 1520, y + 205, ceil(gold_player2))
 
 //Draw HP player 2
 draw_set_color(c_white)
 draw_sprite(spr_heart, 0, x + 1460, y + 265)
-draw_text(x + 1520, y + 270, string(baseHP))
+draw_text(x + 1520, y + 270, string(player2_HP))
 
+//DRAW time pressure bar
+draw_set_color(c_black)
+draw_sprite_ext(spr_bar_bck, 0,  x + 20, y + 270, image_xscale, image_yscale, 0, c_white, 1)
+draw_sprite_ext(spr_bar_value, 0,  x + 20, y + 270, image_xscale * spawnTimeValueCurrent/spawnTimeValueInitial, image_yscale, 0, c_white, 1)
+draw_text(x + 20, y + 270, ceil(spawnTimeValueCurrent/60))
 
 //DRAW TIME
 draw_set_color(c_black)
 draw_text(x, y - 50, "TIME: " + string(gameTimer/60))
+
+
+//DEBUG DRAW
+draw_text(x + 250, y + 250, string(obj_cursor.zoneToSpawnIn))
 
 </string>
           </argument>

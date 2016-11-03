@@ -22,6 +22,7 @@
       <sprite>sprites\spr_unit_bck</sprite>
       <sprite>sprites\spr_button_mouseOver</sprite>
       <sprite>sprites\spr_button_selected</sprite>
+      <sprite>sprites\spr_healer_bomb</sprite>
     </sprites>
     <sprites name="other">
       <sprite>sprites\spr_base</sprite>
@@ -46,6 +47,10 @@
       <sprite>sprites\spr_xbox_a</sprite>
       <sprite>sprites\spr_xbox_b</sprite>
     </sprites>
+    <sprites name="spawnTimePressure">
+      <sprite>sprites\spr_bar_bck</sprite>
+      <sprite>sprites\spr_bar_value</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -62,23 +67,28 @@
     <script>scripts\shootProjectileAt.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_gamepad_controller</object>
     <object>objects\obj_system</object>
+    <object>objects\obj_gamepad_controller</object>
+    <objects name="obj_projectiles">
+      <object>objects\obj_projectile_unit</object>
+      <object>objects\obj_projectile_tower</object>
+      <object>objects\obj_healer_bomb</object>
+    </objects>
     <objects name="obj_cursor_objects">
       <object>objects\obj_cursor</object>
       <object>objects\obj_cursor_attacker</object>
       <object>objects\obj_cursor_defender</object>
-      <object>objects\obj_cursor_attacker11</object>
-      <object>objects\obj_cursor_defender11</object>
     </objects>
     <objects name="obj_tower_units">
       <object>objects\obj_tower</object>
       <object>objects\obj_tower_1</object>
       <object>objects\obj_tower_2</object>
       <object>objects\obj_tower_3</object>
+      <object>objects\obj_tower_slot</object>
     </objects>
     <objects name="obj_attack_units">
       <object>objects\obj_unit</object>
+      <object>objects\obj_unit_healable</object>
       <object>objects\obj_unit_1</object>
       <object>objects\obj_unit_2</object>
       <object>objects\obj_unit_3</object>
@@ -90,11 +100,7 @@
     </objects>
     <object>objects\obj_button_build</object>
     <object>objects\obj_base</object>
-    <object>objects\obj_tower_slot</object>
-    <object>objects\obj_projectile_tower</object>
-    <object>objects\obj_projectile_unit</object>
     <object>objects\obj_path</object>
-    <object>objects\obj_creep_melee</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>

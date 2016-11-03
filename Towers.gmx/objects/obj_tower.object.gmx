@@ -26,20 +26,21 @@
           <argument>
             <kind>1</kind>
             <string>depth            = -1
-enemyNear        = false;
 idd              = 0;
 
+costArrayIndex   = 0
 
-hp               = 85
-initialHp        = hp
-range            = 100
-attackSpeed      = 0.25 * 60
+hp_initial       = 30
+hp_current       = hp_initial
+range            = 30
+attackSpeed      = 0.5 * 60
+dmg              = 2
+projectileSpeed  = 4
+goldCost         = 2
+goldReward       = 3
+
+enemyNear        = false
 canShoot         = true
-dmg              = 4
-projectileSpeed  = 7
-
-goldCost         = 15
-goldReward       = 9
 
 
 
@@ -89,10 +90,11 @@ goldReward       = 9
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (hp &lt;= 0)
+            <string>if (hp_current &lt;= 0)
 {
    idd = instance_nearest(x,y, obj_tower_slot)
    idd.slotOccupied = false
+   obj_system.gold_player1 += goldReward
    instance_destroy()
 }
 if object_exists(obj_unit)
@@ -142,9 +144,9 @@ if (instance_exists(idd) &amp;&amp; enemyNear == true)
     draw_line(x, y, idd.x, idd.y)
 }
 
-draw_sprite_ext(spr_HP_bar, 0, x - 15, y - 25, image_xscale * 4 * hp/initialHp, image_yscale * 2 , 0, c_white, 1)
+draw_sprite_ext(spr_HP_bar, 0, x - 15, y - 25, image_xscale * 4 * hp_current/hp_initial, image_yscale * 2 , 0, c_white, 1)
 draw_set_color(c_white)
-draw_text(x + 25, y - 20, string(hp))
+draw_text(x + 25, y - 20, string(hp_current))
 </string>
           </argument>
         </arguments>

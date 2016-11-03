@@ -29,14 +29,20 @@
 
 if (collision_point( x, y, obj_tower_slot, 0, 0 ))
 {
-    idd = collision_point( x, y, obj_tower_slot, 0, 0 );
-    if (gamepad_button_check(1, gp_shoulderrb) &amp;&amp; idd.slotOccupied == false)
+    idd = collision_point( x, y, obj_tower_slot, 0, 0 )
+    
+    if 
+    (gamepad_button_check_pressed(1, gp_shoulderrb) &amp;&amp; 
+     idd.slotOccupied == false)                     &amp;&amp; 
+     obj_system.gold_player2 &gt;= arrayButtons[xboxPadInput].unit_cost
     {
         instance_create(idd.x, idd.y, unit_selection)
-        obj_system.gold_player2 -= unit_selection.goldCost
+        obj_system.gold_player2 -= arrayButtons[xboxPadInput].unit_cost
         idd.slotOccupied = true
     }
 }
+
+
 </string>
           </argument>
         </arguments>
