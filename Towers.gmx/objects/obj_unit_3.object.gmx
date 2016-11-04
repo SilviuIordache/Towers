@@ -28,14 +28,20 @@
             <string>event_inherited()
 costArrayIndex = 2
 
-range                = 50
-nearbyFriendlyDamage = false
+gold_reward_gate = 6
+goldReward       = 7
 
-hp_initial           = 8   
+hp_initial           = 45
 hp_current           = hp_initial 
-healAmount           = 1
+
+range                = 50
+dmg                  = 30
 attackSpeed          = 2 * 60
-dmg                  = 10
+healAmount           = 3
+
+spd = 1.5
+
+nearbyFriendlyDamage = false
 </string>
           </argument>
         </arguments>
@@ -85,7 +91,7 @@ if (nearbyFriendlyDamage == true)
 {
     path_speed = 0
     //used normal damage variables for heal purposes
-    if (canShoot == true)
+    if (canShoot == true &amp;&amp; idd != noone)
     {
         idd.hp_current += healAmount
         canShoot        = false

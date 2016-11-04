@@ -38,7 +38,10 @@ spd         = 2
 range       = 20
 
 goldCost    = 3
-goldReward  = 4
+goldReward  = 4 //for other player
+
+gold_reward_gate = 1
+
 
 aggroType       = 1     //1 =tower, 0 = base
 towerNear       = false
@@ -175,7 +178,10 @@ if object_exists(obj_tower)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_system.player2_HP -= dmg;
+            <string>obj_system.player2_HP   -= hp_current
+obj_system.gold_player1 += gold_reward_gate
+
+
 
 instance_destroy();
 </string>

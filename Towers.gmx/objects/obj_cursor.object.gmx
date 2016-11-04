@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth           = -10000
+            <string>depth           = -1000000
+
+cursor_speed_attacker = 7
 
 sprite          = spr_cursor_defender
 unit_selection  = obj_unit_1
@@ -33,7 +35,7 @@ idd             = 0
 device_number   = 0  // 0 = 1st device, 1 = 2nd device, 2 = 3rd device, 3 = 4th device
 
 canSpawnUnit    = true
-cd_unitSpawn    = 0.5 * 60
+cd_unitSpawn    = 1 * 60
 
 canSpawnTower   = true
 cd_towerSpawn   = 0.5 * 60
@@ -95,6 +97,12 @@ arrayButtons[] = 0
 //y = window_mouse_get_y()
 
 
+//Player 2 / Defender specific variables------
+snapped         = false
+cursorStunTime  = 30
+//--------------------------------------------
+
+
 
 //---CURSOR MOVE FROM GAMEPAD INPUT-------------------------
 var h_move = gamepad_axis_value(device_number, gp_axislh);
@@ -102,8 +110,8 @@ var v_move = gamepad_axis_value(device_number, gp_axislv);
 
 if ((h_move != 0) || (v_move != 0))
 {
-    x += h_move * 7;
-    y += v_move * 7;
+        x += h_move * cursor_speed
+        y += v_move * cursor_speed
 }
 //----------------------------------------------------------
 
@@ -129,7 +137,105 @@ unit_selection = arrayButtons[xboxPadInput].obj_Created //set the current object
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="4" ename="obj_border">
+      <action>
+        <libid>1</libid>
+        <id>402</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_collision</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>hspeed</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>103</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_hspeed</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>402</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_collision</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>vspeed</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>104</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_vspeed</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -146,7 +252,7 @@ unit_selection = arrayButtons[xboxPadInput].obj_Created //set the current object
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite, 0, x, y, image_xscale * 2, image_yscale * 2, 0, c_white, 1)
+            <string>draw_sprite_ext(sprite, 0, x, y, image_xscale * 3, image_yscale * 3, 0, c_white, 1)
 </string>
           </argument>
         </arguments>

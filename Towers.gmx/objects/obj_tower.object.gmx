@@ -42,9 +42,35 @@ goldReward       = 3
 enemyNear        = false
 canShoot         = true
 
+canTakeHealerBombDamage = true
+healerBombInvulenrabilityTime = 60
 
 
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>canTakeHealerBombDamage = true
 </string>
           </argument>
         </arguments>
@@ -110,7 +136,7 @@ if object_exists(obj_unit)
 
 if (enemyNear &amp;&amp; canShoot == true)
 {
-    script_execute(shootProjectileAt, "unit", idd, dmg, projectileSpeed)
+    script_execute(shootProjectileAt, "unit", idd, dmg, obj_system.projectile_speed_unit)
     canShoot = false
     alarm[0] = attackSpeed
 }
@@ -136,17 +162,17 @@ if (enemyNear &amp;&amp; canShoot == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-
-if (instance_exists(idd) &amp;&amp; enemyNear == true)
+            <string>if (instance_exists(idd) &amp;&amp; enemyNear == true)
 {
     draw_set_color(c_red)
     draw_line(x, y, idd.x, idd.y)
 }
 
-draw_sprite_ext(spr_HP_bar, 0, x - 15, y - 25, image_xscale * 4 * hp_current/hp_initial, image_yscale * 2 , 0, c_white, 1)
+draw_sprite_ext(spr_HP_bar_vertical, 0, x - 50, y + 15, image_xscale * 4 , image_yscale * 8 * hp_current/hp_initial , 0, c_white, 1)
 draw_set_color(c_white)
-draw_text(x + 25, y - 20, string(hp_current))
+draw_text(x - 65, y + 25, string(hp_current))
+
+draw_self();
 </string>
           </argument>
         </arguments>

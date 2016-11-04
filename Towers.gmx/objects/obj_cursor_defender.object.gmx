@@ -8,6 +8,55 @@
   <parentName>obj_cursor</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited()
+cursor_speed = 8
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>snapped = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -27,22 +76,71 @@
             <kind>1</kind>
             <string>event_inherited()
 
+idd = instance_nearest(x, y, obj_tower_slot)
+
+/*
+if (distance_to_point(idd.x, idd.y) &lt; 20)
+{
+    if (snapped == false)
+    {
+        snapped = true
+        x = idd.x
+        y = idd.y
+        //alarm[1] = cursorStunTime
+    }
+}
+else
+{
+    snapped = false
+}
+*/
+
+//find the id of the tower slot your hover over
 if (collision_point( x, y, obj_tower_slot, 0, 0 ))
 {
-    idd = collision_point( x, y, obj_tower_slot, 0, 0 )
-    
-    if 
-    (gamepad_button_check_pressed(1, gp_shoulderrb) &amp;&amp; 
-     idd.slotOccupied == false)                     &amp;&amp; 
-     obj_system.gold_player2 &gt;= arrayButtons[xboxPadInput].unit_cost
-    {
-        instance_create(idd.x, idd.y, unit_selection)
-        obj_system.gold_player2 -= arrayButtons[xboxPadInput].unit_cost
-        idd.slotOccupied = true
-    }
+    idd = collision_point( x, y, obj_tower_slot, 0, 0 ) 
+    with (obj_tower_slot) { cursorOver = false}   //clear highlight on all tower slots
+    idd.cursorOver = true                         //put highlight only on the current one  
+    if (gamepad_button_check_pressed(1, gp_shoulderrb) &amp;&amp; 
+        idd.slotOccupied == false)                     &amp;&amp; 
+        obj_system.gold_player2 &gt;= arrayButtons[xboxPadInput].unit_cost
+        {
+            instance_create(idd.x, idd.y, unit_selection)
+            obj_system.gold_player2 -= arrayButtons[xboxPadInput].unit_cost
+            idd.slotOccupied = true
+        }
+}
+else
+{
+    idd.cursorOver = false //if cursor object is no longer hovering over, clear the highlight 
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited()
+
+//draw_text(x, y + 25, "Snapped: " + string(snapped))
 </string>
           </argument>
         </arguments>

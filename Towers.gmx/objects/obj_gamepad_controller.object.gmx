@@ -68,7 +68,7 @@ if(async_load[? "event_type"] == "gamepad discovered")             // Parse the 
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -87,6 +87,11 @@ if(async_load[? "event_type"] == "gamepad discovered")             // Parse the 
             <kind>1</kind>
             <string>///GAMEPAD VARIABLES DEBUG
 /*
+draw_set_color(c_black)
+draw_rectangle_colour(0, 0, 1500, 900, c_black, c_black, c_black, c_black, false);
+
+draw_set_color(c_fuchsia)
+
 for (var i = 0; i &lt; 4; i++;)
 {
     var xx = 32;

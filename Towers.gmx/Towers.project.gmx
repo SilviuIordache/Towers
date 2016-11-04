@@ -6,6 +6,20 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="spawnTimePressure">
+      <sprite>sprites\spr_bar_bck</sprite>
+      <sprite>sprites\spr_bar_value</sprite>
+    </sprites>
+    <sprites name="xbox_buttons">
+      <sprite>sprites\spr_xbox_x</sprite>
+      <sprite>sprites\spr_xbox_y</sprite>
+      <sprite>sprites\spr_xbox_a</sprite>
+      <sprite>sprites\spr_xbox_b</sprite>
+    </sprites>
+    <sprites name="cursors">
+      <sprite>sprites\spr_cursor_attacker</sprite>
+      <sprite>sprites\spr_cursor_defender</sprite>
+    </sprites>
     <sprites name="towers">
       <sprite>sprites\spr_tower_01</sprite>
       <sprite>sprites\spr_tower_02</sprite>
@@ -13,6 +27,10 @@
       <sprite>sprites\spr_tower_slot32</sprite>
       <sprite>sprites\spr_tower_slot</sprite>
       <sprite>sprites\spr_projectile_tower</sprite>
+      <sprite>sprites\spr_tower_slot_cursorOver</sprite>
+      <sprite>sprites\spr_tower_01_archer</sprite>
+      <sprite>sprites\spr_tower_02_sword</sprite>
+      <sprite>sprites\spr_tower_03_bell</sprite>
     </sprites>
     <sprites name="units">
       <sprite>sprites\spr_unit_1</sprite>
@@ -30,26 +48,14 @@
       <sprite>sprites\spr_spawn_pos</sprite>
       <sprite>sprites\spr_heart</sprite>
       <sprite>sprites\spr_HP_bar</sprite>
+      <sprite>sprites\spr_HP_bar_vertical</sprite>
       <sprite>sprites\spr_player_1</sprite>
       <sprite>sprites\spr_gold_11</sprite>
       <sprite>sprites\spr_gold</sprite>
       <sprite>sprites\spr_path_square32</sprite>
       <sprite>sprites\spr_path_square</sprite>
       <sprite>sprites\spr_player_2</sprite>
-    </sprites>
-    <sprites name="cursors">
-      <sprite>sprites\spr_cursor_attacker</sprite>
-      <sprite>sprites\spr_cursor_defender</sprite>
-    </sprites>
-    <sprites name="xbox_buttons">
-      <sprite>sprites\spr_xbox_x</sprite>
-      <sprite>sprites\spr_xbox_y</sprite>
-      <sprite>sprites\spr_xbox_a</sprite>
-      <sprite>sprites\spr_xbox_b</sprite>
-    </sprites>
-    <sprites name="spawnTimePressure">
-      <sprite>sprites\spr_bar_bck</sprite>
-      <sprite>sprites\spr_bar_value</sprite>
+      <sprite>sprites\spr_border</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -101,9 +107,12 @@
     <object>objects\obj_button_build</object>
     <object>objects\obj_base</object>
     <object>objects\obj_path</object>
+    <object>objects\obj_path_64</object>
+    <object>objects\obj_border</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
+    <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>
   <help>
