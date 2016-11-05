@@ -31,6 +31,7 @@
       <sprite>sprites\spr_tower_01_archer</sprite>
       <sprite>sprites\spr_tower_02_sword</sprite>
       <sprite>sprites\spr_tower_03_bell</sprite>
+      <sprite>sprites\spr_projectile_arrow</sprite>
     </sprites>
     <sprites name="units">
       <sprite>sprites\spr_unit_1</sprite>
@@ -41,6 +42,10 @@
       <sprite>sprites\spr_button_mouseOver</sprite>
       <sprite>sprites\spr_button_selected</sprite>
       <sprite>sprites\spr_healer_bomb</sprite>
+      <sprite>sprites\spr_unit_1f</sprite>
+      <sprite>sprites\spr_unit_2f</sprite>
+      <sprite>sprites\spr_unit_3f</sprite>
+      <sprite>sprites\spr_unit_projectile</sprite>
     </sprites>
     <sprites name="other">
       <sprite>sprites\spr_base</sprite>

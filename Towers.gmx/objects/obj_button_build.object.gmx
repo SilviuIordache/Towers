@@ -68,12 +68,17 @@ if (selected == true)
 draw_set_color(c_black)
 
 //unit sprite
-draw_sprite_ext(spr_name, 0, x + 60, y + 85, 1, 1, 0, c_white, 1)
+if (obj_Created == obj_unit_1 || obj_Created == obj_unit_2 || obj_Created == obj_unit_3)
+   draw_sprite_ext(spr_name, 0, x + 60, y + 85, 1.5, 1.5, 0, c_white, 1)
+else
+    draw_sprite_ext(spr_name, 0, x + 60, y + 85, 1, 1, 0, c_white, 1)
 
 //unit name
-draw_text(x + 20, y + 10, string(unit_name))
+draw_set_color(c_white)
+draw_text(x, y - 15, string(unit_name))
 
 //cost
+draw_set_color(c_black)
 draw_text(x + 10, y + 120, string(unit_cost))
 draw_sprite_ext(spr_gold, 0, x + 50, y + 125, 0.5, 0.5, 0, c_white, 1) 
 

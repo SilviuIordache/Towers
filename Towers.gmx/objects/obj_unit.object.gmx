@@ -34,7 +34,7 @@ canShoot    = true
 attackSpeed = 0.5 * 60
 dmg         = 1
 projectileSpeed  = 3
-spd         = 2
+spd         = 0
 range       = 20
 
 goldCost    = 3
@@ -45,7 +45,9 @@ gold_reward_gate = 1
 
 aggroType       = 1     //1 =tower, 0 = base
 towerNear       = false
-resumePathDelay = 60
+resumePathDelay = 30
+
+stoppedOnce     = false
 
 
 

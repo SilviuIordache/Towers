@@ -11,6 +11,7 @@ if type == "tower"
 with (idd)
 {
      move_towards_point(target.x, target.y, speed)
+     angleVariable = point_direction(x, y, target.x, target.y)
 }
 
 idd.dmg   = damage

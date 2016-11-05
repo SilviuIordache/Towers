@@ -35,7 +35,7 @@ idd             = 0
 device_number   = 0  // 0 = 1st device, 1 = 2nd device, 2 = 3rd device, 3 = 4th device
 
 canSpawnUnit    = true
-cd_unitSpawn    = 1 * 60
+cd_unitSpawn    = 1 * 20
 
 canSpawnTower   = true
 cd_towerSpawn   = 0.5 * 60

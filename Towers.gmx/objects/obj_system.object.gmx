@@ -63,69 +63,69 @@ obj_gamepad_controller.player[idd.device_number] = idd
 
 //HUD BUTTONS---------------------------------------------------
 //Player 1 UNITS
-idd = instance_create(x + 10, y + 300, obj_button_build)
+idd = instance_create(x + 10, y + 350, obj_button_build)
 with (idd)
 {
-    spr_name    = spr_unit_1
+    spr_name    = spr_unit_1f
     spr_button  = spr_xbox_y
     obj_Created = obj_unit_1
-    unit_name   = "DOG UNIT"
+    unit_name   = "BRUISER"
     unit_cost   = 3
 }
 obj_cursor_attacker.arrayButtons[0] = idd
 
-idd = instance_create(x + 10, y + 500, obj_button_build)
+idd = instance_create(x + 10, y + 550, obj_button_build)
 with (idd)
 {
-    spr_name    = spr_unit_2
+    spr_name    = spr_unit_2f
     spr_button  = spr_xbox_x
     obj_Created = obj_unit_2
-    unit_name   = "CAT UNIT"
+    unit_name   = "RANGER"
     unit_cost   = 3
 }
 obj_cursor_attacker.arrayButtons[1] = idd
 
-idd = instance_create(x + 10, y + 700, obj_button_build)
+idd = instance_create(x + 10, y + 750, obj_button_build)
 with (idd)
 {
-    spr_name    = spr_unit_3
+    spr_name    = spr_unit_3f
     spr_button  = spr_xbox_a
     obj_Created = obj_unit_3
-    unit_name   = "FROG UNIT"
+    unit_name   = "PATCHER"
     unit_cost   = 10
 }
 obj_cursor_attacker.arrayButtons[2] = idd
 
 //Player 2 TOWERS
-idd = instance_create(x + 1450, y + 300, obj_button_build)
+idd = instance_create(x + 1450, y + 350, obj_button_build)
 with (idd)
 {
-    spr_name     = spr_tower_01
+    spr_name     = spr_tower_01_archer
     spr_button   = spr_xbox_y
     obj_Created  = obj_tower_1
-    unit_name    = "FIRE TOWER"
+    unit_name    = "ARCHER TOWER"
     unit_cost    = 7
 }
 obj_cursor_defender.arrayButtons[0] = idd
 
-idd = instance_create(x + 1450, y + 500, obj_button_build)
+idd = instance_create(x + 1450, y + 550, obj_button_build)
 with (idd)
 {
-    spr_name     = spr_tower_02
+    spr_name     = spr_tower_02_sword
     spr_button   = spr_xbox_x
     obj_Created  = obj_tower_2
-    unit_name    = "WATER TOWER"
+    unit_name    = "amBUSHer"
     unit_cost    = 7
 }
 obj_cursor_defender.arrayButtons[1] = idd
 
-idd = instance_create(x + 1450, y + 700, obj_button_build)
+idd = instance_create(x + 1450, y + 750, obj_button_build)
 with (idd)
 {
-    spr_name     = spr_tower_03
+    spr_name     = spr_tower_03_bell
     spr_button   = spr_xbox_a
     obj_Created  = obj_tower_3
-    unit_name    = "LEAF TOWER"
+    unit_name    = "HAMMER BELL"
     unit_cost    = 10
 }
 obj_cursor_defender.arrayButtons[2] = idd
