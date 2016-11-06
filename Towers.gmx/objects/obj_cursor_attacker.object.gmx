@@ -62,7 +62,8 @@ else
 
 //---------Spawn Attack Units---------------------------------------------
 if 
-(gamepad_button_check_pressed(0, gp_shoulderrb) &amp;&amp; 
+(obj_system.gameOver == false                   &amp;&amp;
+ gamepad_button_check_pressed(0, gp_shoulderrb) &amp;&amp; 
  canSpawnUnit == true &amp;&amp; zoneToSpawnIn != 0     &amp;&amp; 
  obj_system.gold_player1 &gt;= arrayButtons[xboxPadInput].unit_cost)
 {

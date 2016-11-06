@@ -32,6 +32,8 @@
       <sprite>sprites\spr_tower_02_sword</sprite>
       <sprite>sprites\spr_tower_03_bell</sprite>
       <sprite>sprites\spr_projectile_arrow</sprite>
+      <sprite>sprites\spr_tower_slot_new</sprite>
+      <sprite>sprites\spr_tower_slot_new2</sprite>
     </sprites>
     <sprites name="units">
       <sprite>sprites\spr_unit_1</sprite>
@@ -61,6 +63,11 @@
       <sprite>sprites\spr_path_square</sprite>
       <sprite>sprites\spr_player_2</sprite>
       <sprite>sprites\spr_border</sprite>
+      <sprite>sprites\spr_spawn_zone</sprite>
+      <sprite>sprites\spr_base_final</sprite>
+      <sprite>sprites\spr_heart_final</sprite>
+      <sprite>sprites\spr_gold_final</sprite>
+      <sprite>sprites\spr_background</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -77,6 +84,10 @@
   <scripts name="scripts">
     <script>scripts\shootProjectileAt.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_GameOver</font>
+    <font>fonts\fnt_default</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_system</object>
     <object>objects\obj_gamepad_controller</object>
@@ -109,8 +120,8 @@
       <object>objects\obj_spawn_zone_01</object>
       <object>objects\obj_spawn_zone_02</object>
     </objects>
-    <object>objects\obj_button_build</object>
     <object>objects\obj_base</object>
+    <object>objects\obj_button_build</object>
     <object>objects\obj_path</object>
     <object>objects\obj_path_64</object>
     <object>objects\obj_border</object>

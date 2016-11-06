@@ -209,16 +209,34 @@ if (spawnTimeValueCurrent == 0)
 //------------------------------------
 
 //CHECK FOR WIN CONDITIONS
-/*
-if (gameTimer &lt;= 0 &amp;&amp; baseHP &gt; 1)
-{
-   defendersWon = true
-}
 
-if (baseHP &lt;= 0 &amp;&amp; defendersWon == false)
+if (player2_HP &lt;= 0 )
 {
    attackersWon = true
+   gameOver     = true
 }
+
+if (min(obj_cursor_attacker.arrayButtons[0].unit_cost, 
+        obj_cursor_attacker.arrayButtons[1].unit_cost,
+        obj_cursor_attacker.arrayButtons[2].unit_cost) &gt; gold_player1) &amp;&amp;
+    instance_exists(obj_unit) == false
+{
+  defendersWon  = true
+  gameOver      = true
+}
+
+if (gameOver == true)
+{
+    with (obj_unit) instance_destroy()
+    with (obj_tower) instance_destroy()
+    
+    if (gamepad_button_check_pressed(0, gp_face1) || gamepad_button_check_pressed(1, gp_face1))
+    {
+        room_restart();
+    }
+ 
+}
+
 </string>
           </argument>
         </arguments>
@@ -241,7 +259,12 @@ if (baseHP &lt;= 0 &amp;&amp; defendersWon == false)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Draw player icons backgrounds
+            <string>//DRAW GAME OVER
+//draw_text(x + 200, y, instance_exists(obj_unit))
+
+
+
+//Draw player icons backgrounds
 draw_sprite(spr_player_icon_bck, 0, x, y)
 draw_sprite(spr_player_icon_bck, 0, x + 1440, y)
 
@@ -257,16 +280,16 @@ draw_text(x + 1480, y + 130, "PLAYER 2")
 //Draw GOLD
 draw_set_color(c_white)
     //p1
-    draw_sprite(spr_gold, 0, x + 50, y + 215)
-    draw_text(x + 100, y + 205, ceil(gold_player1))
+    draw_sprite(spr_gold_final, 0, x + 50, y + 200)
+    draw_text(x + 100, y + 195, ceil(gold_player1))
     //p2
-    draw_sprite(spr_gold, 0, x + 1475, y + 215)
-    draw_text(x + 1520, y + 205, ceil(gold_player2))
+    draw_sprite(spr_gold_final, 0, x + 1475, y + 200)
+    draw_text(x + 1520, y + 195, ceil(gold_player2))
 
 //Draw HP player 2
 draw_set_color(c_white)
-draw_sprite(spr_heart, 0, x + 1460, y + 265)
-draw_text(x + 1520, y + 270, string(player2_HP))
+draw_sprite(spr_heart_final, 0, x + 1480, y + 265)
+draw_text(x + 1520, y + 250, string(player2_HP))
 
 //DRAW time pressure bar
 draw_set_color(c_black)
@@ -278,9 +301,30 @@ draw_text(x + 20, y + 270, ceil(spawnTimeValueCurrent/60))
 draw_set_color(c_black)
 draw_text(x, y - 50, "TIME: " + string(gameTimer/60))
 
-
+//DRAW GAME OVER TEXT
+if (gameOver == true)
+{
+    if (attackersWon == true)
+    {
+        draw_set_colour(c_red);
+        draw_set_font(fnt_GameOver);
+        draw_text(500, 400, "ATTACKER WIN" );
+        draw_set_colour(c_white);
+        draw_text(500, 600, "PRESS 'A' TO RESTART" );
+        draw_set_font(fnt_default)
+    }
+    if (defendersWon == true)
+    {
+        draw_set_colour(c_blue);
+        draw_set_font(fnt_GameOver);
+        draw_text(350, 500, "DEFENDER WIN" );
+        draw_set_colour(c_white);
+        draw_text(500, 600, "PRESS 'A' TO RESTART" );
+        draw_set_font(fnt_default)
+    }
+}
 //DEBUG DRAW
-draw_text(x + 250, y + 250, string(obj_cursor.zoneToSpawnIn))
+//draw_text(x + 250, y + 250, string(obj_cursor.zoneToSpawnIn))
 
 </string>
           </argument>
@@ -320,6 +364,7 @@ draw_path(path_06, x, y, true);
 
 draw_set_alpha(1)
 
+draw_sprite(spr_background, 0, x + 140, y + 40)
 //DEBUG DRAW
 /*
 draw_set_color(c_white)

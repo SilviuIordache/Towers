@@ -183,8 +183,6 @@ if object_exists(obj_tower)
             <string>obj_system.player2_HP   -= hp_current
 obj_system.gold_player1 += gold_reward_gate
 
-
-
 instance_destroy();
 </string>
           </argument>

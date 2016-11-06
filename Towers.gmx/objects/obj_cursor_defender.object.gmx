@@ -101,7 +101,8 @@ if (collision_point( x, y, obj_tower_slot, 0, 0 ))
     idd = collision_point( x, y, obj_tower_slot, 0, 0 ) 
     with (obj_tower_slot) { cursorOver = false}   //clear highlight on all tower slots
     idd.cursorOver = true                         //put highlight only on the current one  
-    if (gamepad_button_check_pressed(1, gp_shoulderrb) &amp;&amp; 
+    if (obj_system.gameOver == false                   &amp;&amp;
+        gamepad_button_check_pressed(1, gp_shoulderrb) &amp;&amp; 
         idd.slotOccupied == false)                     &amp;&amp; 
         obj_system.gold_player2 &gt;= arrayButtons[xboxPadInput].unit_cost
         {
