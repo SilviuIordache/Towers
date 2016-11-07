@@ -29,9 +29,9 @@
 costArrayIndex = 1
 
 gold_reward_gate = 10
-goldReward       = 5 
+goldReward       = 3
 
-hp_initial  = 130
+hp_initial  = 80
 hp_current  = hp_initial
 
 range = 3 * 32

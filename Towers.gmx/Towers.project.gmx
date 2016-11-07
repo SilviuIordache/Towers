@@ -41,6 +41,7 @@
       <sprite>sprites\spr_projectile_arrow</sprite>
       <sprite>sprites\spr_tower_slot_new</sprite>
       <sprite>sprites\spr_tower_slot_new2</sprite>
+      <sprite>sprites\spr_projectile_bell</sprite>
     </sprites>
     <sprites name="units">
       <sprite>sprites\spr_unit_1</sprite>
@@ -55,6 +56,9 @@
       <sprite>sprites\spr_unit_2f</sprite>
       <sprite>sprites\spr_unit_3f</sprite>
       <sprite>sprites\spr_unit_projectile</sprite>
+      <sprite>sprites\spr_unit_1_HD</sprite>
+      <sprite>sprites\spr_unit_2_HD</sprite>
+      <sprite>sprites\spr_unit_3_HD</sprite>
     </sprites>
     <sprites name="other">
       <sprite>sprites\spr_base</sprite>
@@ -85,6 +89,8 @@
       <sprite>sprites\spr_intro_screen</sprite>
       <sprite>sprites\spr_main_menu</sprite>
       <sprite>sprites\spr_transition_screen</sprite>
+      <sprite>sprites\spr_tower_slot_hammer</sprite>
+      <sprite>sprites\spr_spawn_select</sprite>
     </sprites>
     <sprites name="menu items">
       <sprite>sprites\spr_start</sprite>
@@ -117,6 +123,7 @@
     <objects name="obj_projectiles">
       <object>objects\obj_projectile_unit</object>
       <object>objects\obj_projectile_tower</object>
+      <object>objects\obj_projectile_tower_bell</object>
       <object>objects\obj_healer_bomb</object>
     </objects>
     <objects name="obj_cursor_objects">
@@ -150,10 +157,10 @@
     <object>objects\obj_border</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room1</room>
     <room>rooms\room_splash</room>
     <room>rooms\room_main_menu</room>
     <room>rooms\room_transition</room>
-    <room>rooms\room1</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>

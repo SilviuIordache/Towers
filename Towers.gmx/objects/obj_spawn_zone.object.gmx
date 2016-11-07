@@ -26,6 +26,102 @@
           <argument>
             <kind>1</kind>
             <string>depth = -100
+cursorOver = false
+
+overloadMax = 7
+overloadCur = 0
+overloaded  = false
+overload_cd = 10 * 60
+overload_temp = 0
+
+overload_ui_offset_y   = 0
+overload_text_offset_y = 0
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>justSpawnedUnit = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>overloaded = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (overloadCur == overloadMax)
+{
+    overloaded = true
+    alarm[0]   = overload_cd
+}
+
+overload_temp += 0.65
+
+if (overload_temp &gt;= 60)
+{
+    if (overloadCur &gt; 0)
+    {
+       overloadCur -= 1
+    }
+    overload_temp = 0
+}
 </string>
           </argument>
         </arguments>
@@ -49,6 +145,32 @@
           <argument>
             <kind>1</kind>
             <string>draw_self()
+//CURSOR OVER SPAWN ZONE
+if (cursorOver)
+    draw_sprite_ext(spr_spawn_select, 0, x + 74, y + 50, 1, 1, 0, c_white, 1)
+
+//OVERLOAD CIRCLES
+for (i = 0; i &lt; overloadCur; i++)
+{
+    if (overloaded == true)
+       draw_set_color(c_red)
+    else
+       draw_set_color(c_yellow)
+    draw_circle(x + 10 +  i * 22, y + overload_ui_offset_y, 10, false)
+}
+
+for (i = 0; i &lt; overloadMax; i++)
+{
+    draw_set_color(c_black)
+    draw_circle(x + 10 +  i * 22, y + overload_ui_offset_y, 10, true)
+}
+
+if (overloaded == true)
+{
+ draw_set_color(c_red)
+ draw_text(x + 25, y + overload_text_offset_y, "OVERLOAD")
+}
+
 </string>
           </argument>
         </arguments>

@@ -56,7 +56,7 @@ else
 
 if (cursorOver == true)
 {
-    draw_sprite_ext(spr_tower_slot_cursorOver, 0, x, y, 2, 2, 0, c_white, 1)
+    draw_sprite_ext(spr_tower_slot_cursorOver, 0, x, y, 0.15, 0.15, 0, c_white, 1)
 }
 </string>
           </argument>

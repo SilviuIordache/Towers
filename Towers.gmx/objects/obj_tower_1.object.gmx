@@ -28,14 +28,14 @@
             <string>event_inherited()
 costArrayIndex = 3
 
-hp_initial       = 185
+hp_initial       = 200
 hp_current       = hp_initial
 
-dmg              = 24
-range            = 4 * 32
-attackSpeed      = 0.7 * 60
+dmg              = 22
+range            = 5 * 32
+attackSpeed      = 0.6 * 60
 
-goldReward       = 10
+goldReward       = 6
 </string>
           </argument>
         </arguments>

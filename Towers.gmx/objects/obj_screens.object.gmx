@@ -56,12 +56,18 @@
             <string>if (room_get_name(room) == "room_splash" )
 {
     draw_sprite(spr_intro_screen, 0, x, y)
+    draw_set_font(fnt_GameOver)
+    draw_set_color(c_yellow)
+    draw_text(x + 450, y + 850, "PRESS 'A' TO CONTINUE")
 }
 
 if (room_get_name(room) == "room_main_menu" )
 {
-    draw_sprite(spr_main_menu, 0, x, y)
     
+    draw_sprite(spr_main_menu, 0, x, y)
+    draw_set_font(fnt_GameOver)
+    draw_set_color(c_yellow)
+    draw_text(x + 450, y + 850, "PRESS 'A' TO CONTINUE")
     draw_sprite(spr_start,   0, x + 650, y + 250)
     draw_sprite(spr_credits, 0, x + 600, y + 400)
     draw_sprite(spr_quit,    0, x + 650, y + 550)

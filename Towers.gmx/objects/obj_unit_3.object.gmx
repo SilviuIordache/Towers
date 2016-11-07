@@ -29,13 +29,13 @@
 costArrayIndex = 2
 
 gold_reward_gate = 6
-goldReward       = 7
+goldReward       = 5
 
 hp_initial           = 45
 hp_current           = hp_initial 
 
 range                = 50
-dmg                  = 30
+dmg                  = 150
 attackSpeed          = 2 * 60
 healAmount           = 3
 

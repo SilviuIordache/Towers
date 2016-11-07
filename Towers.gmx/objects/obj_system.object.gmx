@@ -38,7 +38,7 @@ defendersWon = false
 //----------------------------------------
 
 //MUSIC PLAY--------------
-audio_play_sound(snd_battle, 1, true);
+//audio_play_sound(snd_battle, 1, true);
 //------------------------
 
 //----SPAWN TIME PRESSURE BAR-------------
@@ -70,18 +70,18 @@ if (room_get_name(room) == "room1")
     idd = instance_create(x + 10, y + 350, obj_button_build)
     with (idd)
     {
-        spr_name    = spr_unit_1f
+        spr_name    = spr_unit_1_HD
         spr_button  = spr_xbox_y
         obj_Created = obj_unit_1
         unit_name   = "BRUISER"
-        unit_cost   = 3
+        unit_cost   = 2
     }
     obj_cursor_attacker.arrayButtons[0] = idd
     
     idd = instance_create(x + 10, y + 550, obj_button_build)
     with (idd)
     {
-        spr_name    = spr_unit_2f
+        spr_name    = spr_unit_2_HD
         spr_button  = spr_xbox_x
         obj_Created = obj_unit_2
         unit_name   = "RANGER"
@@ -92,11 +92,11 @@ if (room_get_name(room) == "room1")
     idd = instance_create(x + 10, y + 750, obj_button_build)
     with (idd)
     {
-        spr_name    = spr_unit_3f
+        spr_name    = spr_unit_3_HD
         spr_button  = spr_xbox_a
         obj_Created = obj_unit_3
         unit_name   = "PATCHER"
-        unit_cost   = 10
+        unit_cost   = 6
     }
     obj_cursor_attacker.arrayButtons[2] = idd
     
@@ -118,7 +118,7 @@ if (room_get_name(room) == "room1")
         spr_name     = spr_tower_02_sword
         spr_button   = spr_xbox_x
         obj_Created  = obj_tower_2
-        unit_name    = "amBUSHer"
+        unit_name    = "BUSHER"
         unit_cost    = 7
     }
     obj_cursor_defender.arrayButtons[1] = idd
@@ -167,6 +167,8 @@ projectile_speed_tower = 10
 
 costArray[] = 0
 
+spawnedFirstUnit = false
+
 //units
 costArray[0] = 3
 costArray[1] = 5
@@ -202,14 +204,14 @@ costArray[5] = 16
 gameTimer -= 1
 
 //Spawn Time Pressure----------------
-if (spawnTimeValueCurrent &gt; 0 &amp;&amp; room_get_name(room) == "room1" )
+if (spawnTimeValueCurrent &gt; 0 &amp;&amp; room_get_name(room) == "room1" &amp;&amp; spawnedFirstUnit == true)
 {
     spawnTimeValueCurrent -= 1
 }
 
 if (spawnTimeValueCurrent == 0)
 {
-    gold_player2 += 1/60
+    gold_player2 += 3 * 1/60
 }
 //------------------------------------
 
@@ -264,7 +266,38 @@ if (gameOver == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_default)
+            <string>//DRAW GAME OVER TEXT
+if (gameOver == true)
+{
+    if (attackersWon == true)
+    {
+        draw_sprite(spr_attacker_win_bck, 0, x, y)
+        draw_sprite(spr_attacker_win_frame, 0, x + 400, y + 200)
+        draw_set_colour(c_red);
+        draw_set_font(fnt_GameOver);
+        draw_text(565, 230, "ROBOTS WIN" );
+        draw_set_colour(c_white);
+        draw_text(500, 20, "You took over the world")
+        draw_set_colour(c_white);
+        draw_text(460, 840, "PRESS 'A' TO RESTART" );
+        draw_set_font(fnt_default)
+    }
+    if (defendersWon == true)
+    {
+        draw_sprite(spr_defender_win_bck, 0, x, y)
+        draw_sprite(spr_defender_win_frame, 0, x + 400, y + 200)
+        draw_set_colour(c_black);
+        draw_set_font(fnt_GameOver);
+        draw_text(550, 230, "SAMURAI WIN" );
+        draw_set_colour(c_white);
+        draw_text(500, 20, "We live to fight again")
+        draw_set_colour(c_white);
+        draw_text(460, 840, "PRESS 'A' TO RESTART" );
+        draw_set_font(fnt_default)
+    }
+}
+/*
+draw_set_font(fnt_default)
 //Draw player icons backgrounds
 draw_sprite(spr_player_icon_bck, 0, x, y)
 draw_sprite(spr_player_icon_bck, 0, x + 1440, y)
@@ -375,13 +408,13 @@ draw_rectangle(1440, 0 , 1600, 960, false)
 draw_set_colour(c_white)
 draw_set_alpha(0.3)
 //spawn zone 01 paths
-draw_path(path_01, x, y, true);
-draw_path(path_02, x, y, true);
-draw_path(path_03, x, y, true);
+//draw_path(path_01, x, y, true);
+//draw_path(path_02, x, y, true);
+//draw_path(path_03, x, y, true);
 //spawn zone 02 paths
-draw_path(path_04, x, y, true);
-draw_path(path_05, x, y, true);
-draw_path(path_06, x, y, true);
+//draw_path(path_04, x, y, true);
+//draw_path(path_05, x, y, true);
+//draw_path(path_06, x, y, true);
 
 draw_set_alpha(1)
 
@@ -391,6 +424,71 @@ draw_set_alpha(1)
 draw_set_color(c_white)
 draw_text( 900, 500, "DW:" + string(defendersWon))
 draw_text( 900, 600, "AW:" + string(attackersWon))
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///EXTRA DRAW
+draw_set_font(fnt_default)
+//Draw player icons backgrounds
+draw_sprite(spr_player_icon_bck, 0, x, y)
+draw_sprite(spr_player_icon_bck, 0, x + 1440, y)
+
+//Draw AVATARS
+draw_sprite(spr_attacker, 0, x + 80, y + 80)
+draw_sprite(spr_defender, 0, x + 1520, y + 80)
+
+//Draw player roles
+draw_set_color(c_white)
+draw_text(x + 50,   y + 160, "ROBOTS")
+draw_text(x + 1480, y + 160, "SAMURAI")
+
+//Draw GOLD
+draw_set_color(c_white)
+    //p1
+    draw_sprite(spr_gold_final, 0, x + 30, y + 200)
+    draw_text(x + 70, y + 195, ceil(gold_player1))
+    //p2
+    draw_sprite(spr_gold_final, 0, x + 1475, y + 200)
+    draw_text(x + 1520, y + 195, ceil(gold_player2))
+
+//Draw HP player 2
+draw_set_color(c_white)
+draw_sprite(spr_heart_final, 0, x + 1480, y + 265)
+draw_text(x + 1520, y + 250, string(player2_HP))
+
+//DRAW time pressure bar
+draw_set_color(c_black)
+draw_sprite_ext(spr_bar_bck, 0,  x + 20, y + 270, image_xscale, image_yscale, 0, c_white, 1)
+draw_sprite_ext(spr_bar_value, 0,  x + 20, y + 270, image_xscale * spawnTimeValueCurrent/spawnTimeValueInitial, image_yscale, 0, c_white, 1)
+draw_text(x + 20, y + 270, ceil(spawnTimeValueCurrent/60))
+draw_set_color(c_red)
+if (spawnTimeValueCurrent &lt;= 0)  
+    draw_text(x + 14, y + 242, "DEF GOLD +1/s")
+
+//DRAW TIME
+draw_set_color(c_black)
+draw_text(x, y - 50, "TIME: " + string(gameTimer/60))
+
+
+//DEBUG DRAW
+//draw_text(x + 250, y + 250, string(obj_cursor.zoneToSpawnIn))
 </string>
           </argument>
         </arguments>

@@ -63,13 +63,13 @@ if (mouseOver == true)
 }
 if (selected == true)
 {
-    draw_sprite(spr_button_selected, 0, x, y)
+    draw_sprite(spr_button_mouseOver, 0, x, y)
 }
 draw_set_color(c_black)
 
 //unit sprite
 if (obj_Created == obj_unit_1 || obj_Created == obj_unit_2 || obj_Created == obj_unit_3)
-   draw_sprite_ext(spr_name, 0, x + 60, y + 85, 1.5, 1.5, 0, c_white, 1)
+   draw_sprite_ext(spr_name, 0, x + 60, y + 65, 0.3, 0.3, 0, c_white, 1)
 else
     draw_sprite_ext(spr_name, 0, x + 60, y + 85, 1, 1, 0, c_white, 1)
 
@@ -80,10 +80,10 @@ draw_text(x, y - 18, string(unit_name))
 //cost
 draw_set_color(c_black)
 draw_text(x + 10, y + 120, string(unit_cost))
-draw_sprite_ext(spr_gold, 0, x + 50, y + 125, 0.5, 0.5, 0, c_white, 1) 
+draw_sprite_ext(spr_gold_final, 0, x + 50, y + 125, 0.5, 0.5, 0, c_white, 1) 
 
 //draw Xbox controller button input
-draw_sprite_ext(spr_button, 0, x + 115, y + 110, 1, 1, 0, c_white, 1) 
+draw_sprite_ext(spr_button, 0, x + 128, y + 133, 1, 1, 0, c_white, 1) 
 </string>
           </argument>
         </arguments>

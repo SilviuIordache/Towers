@@ -28,16 +28,16 @@
             <string>event_inherited()
 costArrayIndex = 5
 
-hp_initial       = 190
+hp_initial       = 400
 hp_current       = hp_initial
 
-dmg              = 17
+dmg              = 26
 range            = 2 * 32
-attackSpeed      = 0.9 * 60
+attackSpeed      = 0.5 * 60
 
-goldReward       = 7
+goldReward       = 5
 
-phase            = 0
+
 </string>
           </argument>
         </arguments>
@@ -60,64 +60,39 @@ phase            = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>if (hp_current &lt;= 0)
+{
+   idd = instance_nearest(x,y, obj_tower_slot)
+   idd.slotOccupied = false
+   obj_system.gold_player1 += goldReward
+   instance_destroy()
+}
+if object_exists(obj_unit)
+{
+  idd = instance_nearest(x,y, obj_unit)
+  if (distance_to_object(idd) &lt; range)
+  {
+      enemyNear = true
+  }
+  else
+      enemyNear = false;
+}
 
-if (hp_current &gt; 75/100 * hp_initial &amp;&amp; hp_current &lt;= hp_initial)
-    phase = 0
-if (hp_current &gt; 50/100 * hp_initial &amp;&amp; hp_current &lt;= 75/100 * hp_initial)
-    phase = 1
-if (hp_current &gt; 25/100 * hp_initial &amp;&amp; hp_current &lt;= 50/100 * hp_initial)
-    phase = 2
-if (hp_current &gt; 0                   &amp;&amp; hp_current &lt;= 25/100 * hp_initial)
-    phase = 3
-    
-    
-if (phase == 0)
+if (enemyNear &amp;&amp; canShoot == true)
 {
-    range       = 2 * 32
-    attackSpeed = 1.3 * 60
+    audio_play_sound(snd_tower_attack, 1, false);
+    for (i =0; i &lt; 360; i++)
+    {
+        if ( i%36 == 0)
+        {
+            idd = instance_create(x, y, obj_projectile_tower_bell)
+            idd.direction = i
+            idd.angleVariable = i
+        }
+    }
+    canShoot = false
+    alarm[0] = attackSpeed
 }
-if (phase == 1)
-{
-    range       = 3 * 32
-    attackSpeed = 1.1 * 60
-}
-if (phase == 2)
-{
-    range       = 4 * 32
-    attackSpeed = 0.95 * 60
-}
-if (phase == 3)
-{
-    range       = 5 * 32
-    attackSpeed = 0.75 * 60
-}
-    
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_inherited()
-
-draw_text(x, y, phase)
 </string>
           </argument>
         </arguments>

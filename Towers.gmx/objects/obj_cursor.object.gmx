@@ -102,8 +102,6 @@ snapped         = false
 cursorStunTime  = 30
 //--------------------------------------------
 
-
-
 //---CURSOR MOVE FROM GAMEPAD INPUT-------------------------
 var h_move = gamepad_axis_value(device_number, gp_axislh);
 var v_move = gamepad_axis_value(device_number, gp_axislv);
@@ -235,7 +233,7 @@ unit_selection = arrayButtons[xboxPadInput].obj_Created //set the current object
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
