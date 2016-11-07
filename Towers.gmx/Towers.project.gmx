@@ -84,6 +84,7 @@
       <sprite>sprites\spr_defender_win_frame</sprite>
       <sprite>sprites\spr_intro_screen</sprite>
       <sprite>sprites\spr_main_menu</sprite>
+      <sprite>sprites\spr_transition_screen</sprite>
     </sprites>
     <sprites name="menu items">
       <sprite>sprites\spr_start</sprite>
@@ -151,6 +152,7 @@
   <rooms name="rooms">
     <room>rooms\room_splash</room>
     <room>rooms\room_main_menu</room>
+    <room>rooms\room_transition</room>
     <room>rooms\room1</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>

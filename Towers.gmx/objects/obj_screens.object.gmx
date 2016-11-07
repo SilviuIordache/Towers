@@ -67,9 +67,9 @@ if (room_get_name(room) == "room_main_menu" )
     draw_sprite(spr_quit,    0, x + 650, y + 550)
 }
 
-if (room_get_name(room) == "room_info_screen" )
+if (room_get_name(room) == "room_transition" )
 {
-
+    draw_sprite(spr_transition_screen, 0, x, y)
 }
 </string>
           </argument>

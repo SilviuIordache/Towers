@@ -75,7 +75,7 @@ else
 
 //unit name
 draw_set_color(c_white)
-draw_text(x, y - 15, string(unit_name))
+draw_text(x, y - 18, string(unit_name))
 
 //cost
 draw_set_color(c_black)
