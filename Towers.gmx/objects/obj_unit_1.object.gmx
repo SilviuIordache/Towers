@@ -68,6 +68,7 @@ if (towerNear == true &amp;&amp; (hp_current &gt;= hp_initial/2))
     stoppedOnce = true
     if (canShoot == true)
     {
+        audio_play_sound(snd_unit_attack, 1, false);
         script_execute(shootProjectileAt, "tower", idd, dmg, obj_system.projectile_speed_tower)
         canShoot = false
         alarm[0] = attackSpeed

@@ -28,6 +28,8 @@
             <string>depth    = -10000
 dmg      = 0
 alarm[0] = 30
+
+audio_play_sound(snd_explode, 1, false);
 </string>
           </argument>
         </arguments>

@@ -106,6 +106,7 @@ if (collision_point( x, y, obj_tower_slot, 0, 0 ))
         idd.slotOccupied == false)                     &amp;&amp; 
         obj_system.gold_player2 &gt;= arrayButtons[xboxPadInput].unit_cost
         {
+            audio_play_sound(snd_button_press, 1, false);
             instance_create(idd.x, idd.y, unit_selection)
             obj_system.gold_player2 -= arrayButtons[xboxPadInput].unit_cost
             idd.slotOccupied = true

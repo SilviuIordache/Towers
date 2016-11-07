@@ -69,6 +69,7 @@ if
 {
     canSpawnUnit = false
     alarm[0]     = cd_unitSpawn
+    audio_play_sound(snd_unit_spawned, 1, false);
     instance_create(x, y, obj_cursor_attacker.unit_selection)
     obj_system.gold_player1 -= arrayButtons[xboxPadInput].unit_cost // remove gold cost from gold total
     obj_system.spawnTimeValueCurrent = obj_system.spawnTimeValueInitial

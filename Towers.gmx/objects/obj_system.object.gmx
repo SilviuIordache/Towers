@@ -37,99 +37,104 @@ attackersWon = false
 defendersWon = false
 //----------------------------------------
 
+//MUSIC PLAY--------------
+audio_play_sound(snd_battle, 1, true);
+//------------------------
 
 //----SPAWN TIME PRESSURE BAR-------------
 spawnTimeValueInitial = 3 * 60
 spawnTimeValueCurrent = spawnTimeValueInitial
 //----------------------------------------
 
-
-//------CREATE CURSORS------------------------------------------
-
-//currentPos =
-//player 1 attacker cursor, device input id = 0
-idd = instance_create(200, 800, obj_cursor_attacker)
-idd.device_number = 0
-idd.sprite        = spr_cursor_attacker
-obj_gamepad_controller.player[idd.device_number] = idd
-
-//player 2 attacker cursor, device input id = 1
-idd = instance_create(200, 800, obj_cursor_defender)
-idd.device_number = 1
-idd.sprite        = spr_cursor_defender
-obj_gamepad_controller.player[idd.device_number] = idd
-//--------------------------------------------------------------
-
-
-//HUD BUTTONS---------------------------------------------------
-//Player 1 UNITS
-idd = instance_create(x + 10, y + 350, obj_button_build)
-with (idd)
+if (room_get_name(room) == "room1")
 {
-    spr_name    = spr_unit_1f
-    spr_button  = spr_xbox_y
-    obj_Created = obj_unit_1
-    unit_name   = "BRUISER"
-    unit_cost   = 3
+    //------CREATE CURSORS------------------------------------------
+    
+    //currentPos =
+    //player 1 attacker cursor, device input id = 0
+    idd = instance_create(200, 800, obj_cursor_attacker)
+    idd.device_number = 0
+    idd.sprite        = spr_cursor_attacker
+    obj_gamepad_controller.player[idd.device_number] = idd
+    
+    //player 2 attacker cursor, device input id = 1
+    idd = instance_create(200, 800, obj_cursor_defender)
+    idd.device_number = 1
+    idd.sprite        = spr_cursor_defender
+    obj_gamepad_controller.player[idd.device_number] = idd
+    //--------------------------------------------------------------
+    
+    
+    //HUD BUTTONS---------------------------------------------------
+    //Player 1 UNITS
+    idd = instance_create(x + 10, y + 350, obj_button_build)
+    with (idd)
+    {
+        spr_name    = spr_unit_1f
+        spr_button  = spr_xbox_y
+        obj_Created = obj_unit_1
+        unit_name   = "BRUISER"
+        unit_cost   = 3
+    }
+    obj_cursor_attacker.arrayButtons[0] = idd
+    
+    idd = instance_create(x + 10, y + 550, obj_button_build)
+    with (idd)
+    {
+        spr_name    = spr_unit_2f
+        spr_button  = spr_xbox_x
+        obj_Created = obj_unit_2
+        unit_name   = "RANGER"
+        unit_cost   = 3
+    }
+    obj_cursor_attacker.arrayButtons[1] = idd
+    
+    idd = instance_create(x + 10, y + 750, obj_button_build)
+    with (idd)
+    {
+        spr_name    = spr_unit_3f
+        spr_button  = spr_xbox_a
+        obj_Created = obj_unit_3
+        unit_name   = "PATCHER"
+        unit_cost   = 10
+    }
+    obj_cursor_attacker.arrayButtons[2] = idd
+    
+    //Player 2 TOWERS
+    idd = instance_create(x + 1450, y + 350, obj_button_build)
+    with (idd)
+    {
+        spr_name     = spr_tower_01_archer
+        spr_button   = spr_xbox_y
+        obj_Created  = obj_tower_1
+        unit_name    = "ARCHER TOWER"
+        unit_cost    = 7
+    }
+    obj_cursor_defender.arrayButtons[0] = idd
+    
+    idd = instance_create(x + 1450, y + 550, obj_button_build)
+    with (idd)
+    {
+        spr_name     = spr_tower_02_sword
+        spr_button   = spr_xbox_x
+        obj_Created  = obj_tower_2
+        unit_name    = "amBUSHer"
+        unit_cost    = 7
+    }
+    obj_cursor_defender.arrayButtons[1] = idd
+    
+    idd = instance_create(x + 1450, y + 750, obj_button_build)
+    with (idd)
+    {
+        spr_name     = spr_tower_03_bell
+        spr_button   = spr_xbox_a
+        obj_Created  = obj_tower_3
+        unit_name    = "HAMMER BELL"
+        unit_cost    = 10
+    }
+    obj_cursor_defender.arrayButtons[2] = idd
+    //------------------------------------------------------------------
 }
-obj_cursor_attacker.arrayButtons[0] = idd
-
-idd = instance_create(x + 10, y + 550, obj_button_build)
-with (idd)
-{
-    spr_name    = spr_unit_2f
-    spr_button  = spr_xbox_x
-    obj_Created = obj_unit_2
-    unit_name   = "RANGER"
-    unit_cost   = 3
-}
-obj_cursor_attacker.arrayButtons[1] = idd
-
-idd = instance_create(x + 10, y + 750, obj_button_build)
-with (idd)
-{
-    spr_name    = spr_unit_3f
-    spr_button  = spr_xbox_a
-    obj_Created = obj_unit_3
-    unit_name   = "PATCHER"
-    unit_cost   = 10
-}
-obj_cursor_attacker.arrayButtons[2] = idd
-
-//Player 2 TOWERS
-idd = instance_create(x + 1450, y + 350, obj_button_build)
-with (idd)
-{
-    spr_name     = spr_tower_01_archer
-    spr_button   = spr_xbox_y
-    obj_Created  = obj_tower_1
-    unit_name    = "ARCHER TOWER"
-    unit_cost    = 7
-}
-obj_cursor_defender.arrayButtons[0] = idd
-
-idd = instance_create(x + 1450, y + 550, obj_button_build)
-with (idd)
-{
-    spr_name     = spr_tower_02_sword
-    spr_button   = spr_xbox_x
-    obj_Created  = obj_tower_2
-    unit_name    = "amBUSHer"
-    unit_cost    = 7
-}
-obj_cursor_defender.arrayButtons[1] = idd
-
-idd = instance_create(x + 1450, y + 750, obj_button_build)
-with (idd)
-{
-    spr_name     = spr_tower_03_bell
-    spr_button   = spr_xbox_a
-    obj_Created  = obj_tower_3
-    unit_name    = "HAMMER BELL"
-    unit_cost    = 10
-}
-obj_cursor_defender.arrayButtons[2] = idd
-//------------------------------------------------------------------
 </string>
           </argument>
         </arguments>
@@ -197,7 +202,7 @@ costArray[5] = 16
 gameTimer -= 1
 
 //Spawn Time Pressure----------------
-if (spawnTimeValueCurrent &gt; 0)
+if (spawnTimeValueCurrent &gt; 0 &amp;&amp; room_get_name(room) == "room1" )
 {
     spawnTimeValueCurrent -= 1
 }
@@ -259,29 +264,24 @@ if (gameOver == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//DRAW GAME OVER
-//draw_text(x + 200, y, instance_exists(obj_unit))
-
-
-
-//Draw player icons backgrounds
+            <string>//Draw player icons backgrounds
 draw_sprite(spr_player_icon_bck, 0, x, y)
 draw_sprite(spr_player_icon_bck, 0, x + 1440, y)
 
 //Draw AVATARS
-draw_sprite(spr_player_1, 0, x + 80, y + 70)
-draw_sprite(spr_player_2, 0, x + 1520, y + 70)
+draw_sprite(spr_attacker, 0, x + 80, y + 80)
+draw_sprite(spr_defender, 0, x + 1520, y + 80)
 
 //Draw player roles
-draw_set_color(c_black)
-draw_text(x + 50,   y + 130, "PLAYER 1")
-draw_text(x + 1480, y + 130, "PLAYER 2")
+draw_set_color(c_white)
+draw_text(x + 50,   y + 160, "ROBOTS")
+draw_text(x + 1480, y + 160, "SAMURAI")
 
 //Draw GOLD
 draw_set_color(c_white)
     //p1
-    draw_sprite(spr_gold_final, 0, x + 50, y + 200)
-    draw_text(x + 100, y + 195, ceil(gold_player1))
+    draw_sprite(spr_gold_final, 0, x + 30, y + 200)
+    draw_text(x + 70, y + 195, ceil(gold_player1))
     //p2
     draw_sprite(spr_gold_final, 0, x + 1475, y + 200)
     draw_text(x + 1520, y + 195, ceil(gold_player2))
@@ -296,6 +296,9 @@ draw_set_color(c_black)
 draw_sprite_ext(spr_bar_bck, 0,  x + 20, y + 270, image_xscale, image_yscale, 0, c_white, 1)
 draw_sprite_ext(spr_bar_value, 0,  x + 20, y + 270, image_xscale * spawnTimeValueCurrent/spawnTimeValueInitial, image_yscale, 0, c_white, 1)
 draw_text(x + 20, y + 270, ceil(spawnTimeValueCurrent/60))
+draw_set_color(c_red)
+if (spawnTimeValueCurrent &lt;= 0)  
+    draw_text(x + 14, y + 242, "DEF GOLD +1/s")
 
 //DRAW TIME
 draw_set_color(c_black)
@@ -306,20 +309,28 @@ if (gameOver == true)
 {
     if (attackersWon == true)
     {
+        draw_sprite(spr_attacker_win_bck, 0, x, y)
+        draw_sprite(spr_attacker_win_frame, 0, x + 400, y + 200)
         draw_set_colour(c_red);
         draw_set_font(fnt_GameOver);
-        draw_text(500, 400, "ATTACKER WIN" );
+        draw_text(565, 230, "ROBOTS WIN" );
         draw_set_colour(c_white);
-        draw_text(500, 600, "PRESS 'A' TO RESTART" );
+        draw_text(500, 20, "You took over the world")
+        draw_set_colour(c_white);
+        draw_text(460, 840, "PRESS 'A' TO RESTART" );
         draw_set_font(fnt_default)
     }
     if (defendersWon == true)
     {
-        draw_set_colour(c_blue);
+        draw_sprite(spr_defender_win_bck, 0, x, y)
+        draw_sprite(spr_defender_win_frame, 0, x + 400, y + 200)
+        draw_set_colour(c_black);
         draw_set_font(fnt_GameOver);
-        draw_text(350, 500, "DEFENDER WIN" );
+        draw_text(550, 230, "SAMURAI WIN" );
         draw_set_colour(c_white);
-        draw_text(500, 600, "PRESS 'A' TO RESTART" );
+        draw_text(500, 20, "We live to fight again")
+        draw_set_colour(c_white);
+        draw_text(460, 840, "PRESS 'A' TO RESTART" );
         draw_set_font(fnt_default)
     }
 }
@@ -342,17 +353,26 @@ if (gameOver == true)
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
             <string>///NORMAL DRAW
-draw_set_colour(c_white)
-depth = 10
-draw_set_alpha(0.3)
 
+depth = 10
+draw_sprite(spr_background2, 0, x + 160, y)
+
+draw_set_colour(c_teal)
+draw_rectangle(0, 0 , 160, 960, false)
+
+draw_set_colour(c_maroon)
+draw_rectangle(1440, 0 , 1600, 960, false)
+
+
+draw_set_colour(c_white)
+draw_set_alpha(0.3)
 //spawn zone 01 paths
 draw_path(path_01, x, y, true);
 draw_path(path_02, x, y, true);
@@ -364,7 +384,7 @@ draw_path(path_06, x, y, true);
 
 draw_set_alpha(1)
 
-draw_sprite(spr_background, 0, x + 140, y + 40)
+
 //DEBUG DRAW
 /*
 draw_set_color(c_white)

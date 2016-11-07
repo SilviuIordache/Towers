@@ -136,6 +136,7 @@ if object_exists(obj_unit)
 
 if (enemyNear &amp;&amp; canShoot == true)
 {
+    audio_play_sound(snd_tower_attack, 1, false);
     script_execute(shootProjectileAt, "unit", idd, dmg, obj_system.projectile_speed_unit)
     canShoot = false
     alarm[0] = attackSpeed
@@ -162,17 +163,18 @@ if (enemyNear &amp;&amp; canShoot == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(idd) &amp;&amp; enemyNear == true)
+            <string>draw_self();
+if (instance_exists(idd) &amp;&amp; enemyNear == true)
 {
     draw_set_color(c_red)
     draw_line(x, y, idd.x, idd.y)
 }
 
-draw_sprite_ext(spr_HP_bar_vertical, 0, x - 50, y + 15, image_xscale * 4 , image_yscale * 8 * hp_current/hp_initial , 0, c_white, 1)
-draw_set_color(c_white)
-draw_text(x - 65, y + 25, string(hp_current))
+draw_sprite_ext(spr_HP_bar, 0, x - 50, y - 100, image_xscale * 8 * hp_current/hp_initial, image_yscale * 4  , 0, c_white, 1)
+draw_set_color(c_black)
+draw_text(x + 15, y - 105, string(hp_current))
 
-draw_self();
+
 </string>
           </argument>
         </arguments>

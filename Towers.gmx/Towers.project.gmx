@@ -4,7 +4,14 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_battle</sound>
+    <sound>sound\snd_button_press</sound>
+    <sound>sound\snd_unit_spawned</sound>
+    <sound>sound\snd_tower_attack</sound>
+    <sound>sound\snd_unit_attack</sound>
+    <sound>sound\snd_explode</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="spawnTimePressure">
       <sprite>sprites\spr_bar_bck</sprite>
@@ -68,6 +75,20 @@
       <sprite>sprites\spr_heart_final</sprite>
       <sprite>sprites\spr_gold_final</sprite>
       <sprite>sprites\spr_background</sprite>
+      <sprite>sprites\spr_attacker</sprite>
+      <sprite>sprites\spr_defender</sprite>
+      <sprite>sprites\spr_background2</sprite>
+      <sprite>sprites\spr_attacker_win_bck</sprite>
+      <sprite>sprites\spr_defender_win_bck</sprite>
+      <sprite>sprites\spr_attacker_win_frame</sprite>
+      <sprite>sprites\spr_defender_win_frame</sprite>
+      <sprite>sprites\spr_intro_screen</sprite>
+      <sprite>sprites\spr_main_menu</sprite>
+    </sprites>
+    <sprites name="menu items">
+      <sprite>sprites\spr_start</sprite>
+      <sprite>sprites\spr_credits</sprite>
+      <sprite>sprites\spr_quit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -90,6 +111,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_system</object>
+    <object>objects\obj_screens</object>
     <object>objects\obj_gamepad_controller</object>
     <objects name="obj_projectiles">
       <object>objects\obj_projectile_unit</object>
@@ -127,6 +149,8 @@
     <object>objects\obj_border</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_splash</room>
+    <room>rooms\room_main_menu</room>
     <room>rooms\room1</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
