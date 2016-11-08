@@ -100,6 +100,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\path_01</path>
@@ -157,10 +158,11 @@
     <object>objects\obj_border</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room_splash</room>
     <room>rooms\room_main_menu</room>
     <room>rooms\room_transition</room>
+    <room>rooms\room1</room>
+    <room>rooms\room_tutorial</room>
     <room>rooms\room2</room>
     <room>rooms\room0</room>
   </rooms>

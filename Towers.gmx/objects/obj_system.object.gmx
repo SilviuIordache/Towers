@@ -244,6 +244,15 @@ if (gameOver == true)
  
 }
 
+//RESTART GAME IF Select and Start pressed on both controllers----------
+if (gamepad_button_check(0, gp_select) &amp;&amp;
+    gamepad_button_check(0, gp_start) &amp;&amp;
+    gamepad_button_check(1, gp_select) &amp;&amp;
+    gamepad_button_check(1, gp_start))
+{
+    room_restart();
+}
+//----------------------------------------------------------------------
 </string>
           </argument>
         </arguments>
